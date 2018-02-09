@@ -1,6 +1,6 @@
 //
 //  main.cpp
-//  aaaa
+//  eigen_faces
 //
 //  Created by Wojciech Richert on 20.01.2018.
 //  Copyright © 2018 Wojciech Richert. All rights reserved.
@@ -14,34 +14,47 @@ using namespace std;
 const int liczbazdjec = 10;
 const int m = 1000;
 const int n= 1000;
+#include <string>
 
 int main(int argc, const char * argv[]) {
     double** tablica = new double*[m*n];
     for(int i = 0; i < m*n; ++i){
         tablica[i] = new double[liczbazdjec];
     }
+    double **array = new double*[m];
+    for (int i=0; i<n; ++i)
+        array[i] = new double[m];
     
-    Mat img = imread("/Users/wojtek/Desktop/aaaa/aaaa/1.png", 0);
-    cout << img;
-    cout<< "\n";
-    img.convertTo(img, CV_64F, 1, 0);
-    double **array = new double*[img.rows];
-    for (int i=0; i<img.rows; ++i)
-        array[i] = new double[img.cols];
-    
-    for (int i=0; i<img.rows; ++i)
-        array[i] = img.ptr<double>(i);
-    int k =0;
-    
-    for(int i = 0 ;i < img.rows; ++i){
-        for(int j = 0; j < img.cols; ++j){
-            cout << array[i][j];
-            ++k;
-            
-        }
+    for(int img_number= 0; img_number<liczbazdjec; ++img_number){
+        string aaa = "/Users/wojtek/Desktop/aaaa/aaaa/" +to_string(img_number+1)+".png" ;
+        Mat img = imread(aaa, 0);
+        //cout << img;
         cout<< "\n";
+        img.convertTo(img, CV_64F, 1, 0);
+
+        
+        for (int i=0; i<img.rows; ++i)
+            array[i] = img.ptr<double>(i);
+        int x =0;
+        
+        for(int i = 0 ;i < img.rows; ++i){
+            for(int j = 0; j < img.cols; ++j){
+                //cout << array[i][j];
+                tablica[x][img_number]= array[i][j];
+                ++x;
+            }
+            cout<< "\n";
+        }
     }
-    cout << " "<< k;
+    
+    
+    for(int i = 0; i <m*n; ++i){
+        for(int j= 0; j<liczbazdjec; ++j){
+            cout << " "<< tablica[i][j];
+        }
+        cout << "\n";
+    }
     delete [] array;
+    delete [] tablica;
 }
 
