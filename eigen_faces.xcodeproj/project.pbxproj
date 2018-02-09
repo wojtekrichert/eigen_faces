@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2EDCA6E1202E34F3001032EC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCA6E0202E34F3001032EC /* main.cpp */; };
+		2EDCA6E9202E354E001032EC /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDCA6E8202E354E001032EC /* OpenCL.framework */; };
+		2EDCA6EB202E3565001032EC /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDCA6EA202E3565001032EC /* opencv2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		2EDCA6DD202E34F2001032EC /* eigen_faces */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = eigen_faces; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EDCA6E0202E34F3001032EC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		2EDCA6E8202E354E001032EC /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
+		2EDCA6EA202E3565001032EC /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = eigen_faces/opencv2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EDCA6EB202E3565001032EC /* opencv2.framework in Frameworks */,
+				2EDCA6E9202E354E001032EC /* OpenCL.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +49,7 @@
 			children = (
 				2EDCA6DF202E34F2001032EC /* eigen_faces */,
 				2EDCA6DE202E34F2001032EC /* Products */,
+				2EDCA6E7202E354E001032EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -60,6 +67,15 @@
 				2EDCA6E0202E34F3001032EC /* main.cpp */,
 			);
 			path = eigen_faces;
+			sourceTree = "<group>";
+		};
+		2EDCA6E7202E354E001032EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2EDCA6EA202E3565001032EC /* opencv2.framework */,
+				2EDCA6E8202E354E001032EC /* OpenCL.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +249,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/eigen_faces",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -241,6 +261,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/eigen_faces",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
