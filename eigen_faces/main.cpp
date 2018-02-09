@@ -14,7 +14,7 @@ using namespace std;
 const int liczbazdjec = 10;
 const int m = 1000;
 const int n= 1000;
-#include <string>
+
 
 int main(int argc, const char * argv[]) {
     double** tablica = new double*[m*n];
@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
         array[i] = new double[m];
     
     for(int img_number= 0; img_number<liczbazdjec; ++img_number){
-        string aaa = "/Users/wojtek/Desktop/aaaa/aaaa/" +to_string(img_number+1)+".png" ;
+        string aaa = "/Users/wojtek/Desktop/eigen_faces/eigen_faces/" +to_string(img_number+1)+".png" ;
         Mat img = imread(aaa, 0);
         //cout << img;
         cout<< "\n";
