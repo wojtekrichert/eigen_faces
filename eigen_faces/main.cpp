@@ -12,17 +12,21 @@
 #include <vector>
 using namespace cv;
 using namespace std;
-const int liczbazdjec = 10;
+const int liczbazdjec = 20;
 // dimensions of pictures:
 const int m = 1000;
 const int n= 1000;
 
 
-int main(int argc, const char * argv[]) {
+int main() {
     // average face:
     double * avg = new double[m*n];
     for(int i =0; i< m*n; ++i){
         avg[i]= 0;
+    }
+    double * display = new double[m*n];
+    for(int i =0; i< m*n; ++i){
+        display[i]= 0;
     }
     //********************************************
     double** tablica = new double*[m*n];
@@ -64,24 +68,26 @@ int main(int argc, const char * argv[]) {
         //cout << avg[i] << "\n";
     }
     // showing average face:
-    int x=0;
-    for(int i =0; i<m; ++i){
-        for(int j=0; j<n;++j){
-            array[i][j]=avg[x];
-            ++x;
-        }
-    }
     Mat A(n, m, CV_64F, avg );
-    // zeby pokazac srednia twarz, trzeba przeskalowac wartosci 0-255 na 0-1:
-    double minVal;
-    double maxVal;
-    Point minLoc;
-    Point maxLoc;
-    minMaxLoc( A, &minVal, &maxVal, &minLoc, &maxLoc );
-    A.convertTo(A,CV_8U,255.0/(maxVal-minVal));
+    A.convertTo(A,CV_8U,1,0);
     namedWindow( "Average face", CV_WINDOW_AUTOSIZE );
     imshow( "Average face", A );
     waitKey(0);
+    
+    // odejmowanie wartosci sreniej twarzy od kazdej twarzy z osobna i wyswietlanie :
+    for(int img_number= 0; img_number<liczbazdjec; ++img_number){
+        for(int j =0 ; j<m*n; ++j){
+            tablica[j][img_number]= tablica[j][img_number]- avg[j];
+            display[j]= tablica[j][img_number];
+        }
+        Mat A(n, m, CV_64F, display );
+        A.convertTo(A,CV_8U,1,0);
+        namedWindow( "Average face", CV_WINDOW_AUTOSIZE );
+        imshow( "Average face", A );
+        waitKey(0);
+        
+    }
+    delete [] display;
     delete [] array;
     delete [] tablica;
     delete [] avg;
