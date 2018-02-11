@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2ED6FB532030624F002F432A /* libarmadillo.8.30.4.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED6FB522030624F002F432A /* libarmadillo.8.30.4.dylib */; };
+		2ED6FB552030A3C7002F432A /* matplotlibcpp.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 2ED6FB542030A3C7002F432A /* matplotlibcpp.h */; };
 		2EDCA6E1202E34F3001032EC /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2EDCA6E0202E34F3001032EC /* main.cpp */; };
 		2EDCA6E9202E354E001032EC /* OpenCL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDCA6E8202E354E001032EC /* OpenCL.framework */; };
 		2EDCA6ED202EE6AC001032EC /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EDCA6EC202EE6AC001032EC /* OpenGL.framework */; };
@@ -68,6 +70,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2ED6FB4F202F5CB2002F432A /* signature_of_eigen3_matrix_library */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = signature_of_eigen3_matrix_library; path = ../../../../usr/local/Cellar/eigen/3.3.4/include/eigen3/signature_of_eigen3_matrix_library; sourceTree = "<group>"; };
+		2ED6FB50202F5D58002F432A /* SVD */ = {isa = PBXFileReference; lastKnownFileType = text; name = SVD; path = ../../../../usr/local/Cellar/eigen/3.3.4/include/eigen3/Eigen/SVD; sourceTree = "<group>"; };
+		2ED6FB522030624F002F432A /* libarmadillo.8.30.4.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libarmadillo.8.30.4.dylib; path = ../../../../usr/local/Cellar/armadillo/8.300.4/lib/libarmadillo.8.30.4.dylib; sourceTree = "<group>"; };
+		2ED6FB542030A3C7002F432A /* matplotlibcpp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = matplotlibcpp.h; path = ../../../../usr/local/include/matplotlibcpp.h; sourceTree = "<group>"; };
 		2EDCA6DD202E34F2001032EC /* eigen_faces */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = eigen_faces; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EDCA6E0202E34F3001032EC /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		2EDCA6E8202E354E001032EC /* OpenCL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenCL.framework; path = System/Library/Frameworks/OpenCL.framework; sourceTree = SDKROOT; };
@@ -123,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2ED6FB552030A3C7002F432A /* matplotlibcpp.h in Frameworks */,
+				2ED6FB532030624F002F432A /* libarmadillo.8.30.4.dylib in Frameworks */,
 				2EDCA724202F02A0001032EC /* libopencv_photo.3.4.0.dylib in Frameworks */,
 				2EDCA728202F02A0001032EC /* libopencv_phase_unwrapping.3.4.0.dylib in Frameworks */,
 				2EDCA740202F02A0001032EC /* libopencv_rgbd.3.4.0.dylib in Frameworks */,
@@ -177,6 +185,7 @@
 		2EDCA6D4202E34F2001032EC = {
 			isa = PBXGroup;
 			children = (
+				2ED6FB4F202F5CB2002F432A /* signature_of_eigen3_matrix_library */,
 				2EDCA706202F029D001032EC /* libopencv_aruco.3.4.0.dylib */,
 				2EDCA717202F029F001032EC /* libopencv_bgsegm.3.4.0.dylib */,
 				2EDCA702202F029D001032EC /* libopencv_bioinspired.3.4.0.dylib */,
@@ -244,6 +253,9 @@
 		2EDCA6E7202E354E001032EC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2ED6FB542030A3C7002F432A /* matplotlibcpp.h */,
+				2ED6FB522030624F002F432A /* libarmadillo.8.30.4.dylib */,
+				2ED6FB50202F5D58002F432A /* SVD */,
 				2EDCA6EE202EE870001032EC /* GLUT.framework */,
 				2EDCA6EC202EE6AC001032EC /* OpenGL.framework */,
 				2EDCA6EA202E3565001032EC /* opencv2.framework */,
@@ -427,10 +439,21 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/eigen_faces",
 				);
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/eigen3/,
+					/usr/local/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/opencv/3.4.0_1/lib,
+					/usr/local/lib,
+					/usr/local/Cellar/armadillo/8.300.4/lib,
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-I",
+					/usr/local/include/eigen3/,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -444,10 +467,21 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/eigen_faces",
 				);
-				HEADER_SEARCH_PATHS = /usr/local/include;
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					/usr/local/include/eigen3/,
+					/usr/local/include,
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/usr/local/Cellar/opencv/3.4.0_1/lib,
+					/usr/local/lib,
+					/usr/local/Cellar/armadillo/8.300.4/lib,
+				);
+				OTHER_CPLUSPLUSFLAGS = (
+					"$(OTHER_CFLAGS)",
+					"-I",
+					/usr/local/include/eigen3/,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
